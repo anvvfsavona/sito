@@ -1,0 +1,979 @@
+<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Associazione Nazionale Vigili del Fuoco Sez. Savona</title><meta name="description" content="Eventi, notizie e fotografie della nostra associazione."><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700&family=Barlow+Condensed:wght@600;700&display=swap"><style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}
+/* Layout: sito a colonna unica, fascia riflettente in alto, hero a sinistra con il prossimo appuntamento a destra, poi sezioni Eventi, News, Foto, Chi siamo. */
+:root {
+  --bg: #F2F3F0;
+  --surface: #FFFFFF;
+  --soft: #E8EAE5;
+  --ink: #1A1D21;
+  --muted: #59616A;
+  --line: #D5D9D2;
+  --accent: #B3261E;
+  --accent-ink: #FFFFFF;
+  --tape: #E8D400;
+  --tape2: #C4C9CE;
+  --focus: #0B57D0;
+  --f-d: 'Barlow Condensed', 'Arial Narrow', 'Roboto Condensed', sans-serif;
+  --f-b: 'Barlow', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #15171A;
+    --surface: #1E2226;
+    --soft: #262B30;
+    --ink: #EDEFEA;
+    --muted: #A2AAB2;
+    --line: #343A40;
+    --accent: #FF7266;
+    --accent-ink: #220A07;
+    --tape: #E8D400;
+    --tape2: #6F7780;
+    --focus: #8AB4FF;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #15171A;
+  --surface: #1E2226;
+  --soft: #262B30;
+  --ink: #EDEFEA;
+  --muted: #A2AAB2;
+  --line: #343A40;
+  --accent: #FF7266;
+  --accent-ink: #220A07;
+  --tape: #E8D400;
+  --tape2: #6F7780;
+  --focus: #8AB4FF;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font: 400 16px/1.55 var(--f-b);
+  -webkit-text-size-adjust: 100%;
+}
+h1, h2, h3, p, figure, dl, dd { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+
+.wrap {
+  width: 100%;
+  max-width: 1080px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+.tape {
+  height: 12px;
+  background: linear-gradient(var(--tape) 0 33.33%, var(--tape2) 33.33% 66.66%, var(--tape) 66.66% 100%);
+}
+
+/* Barra di gestione (solo per chi può modificare) */
+.adminbar { background: var(--ink); color: var(--bg); font-size: .9rem; }
+.adminbar .wrap { padding-block: 10px; display: grid; gap: 2px; }
+
+/* Intestazione */
+.top { border-bottom: 1px solid var(--line); }
+.top-in { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 4px 24px; padding-block: 8px; }
+.brand { font: 700 1.35rem/1.1 var(--f-d); text-transform: uppercase; letter-spacing: .03em; text-decoration: none; padding-block: 10px; }
+.nav { display: flex; flex-wrap: wrap; gap: 0 20px; }
+.nav a { display: inline-flex; align-items: center; min-height: 44px; font-weight: 600; text-decoration: none; border-bottom: 2px solid transparent; }
+.nav a:hover { border-bottom-color: var(--accent); }
+
+/* Hero */
+.hero { padding-block: 56px 40px; }
+.hero-in { display: grid; gap: 32px; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); align-items: end; }
+.hero-in.solo { grid-template-columns: minmax(0, 1fr); }
+.hero h1 { font: 700 clamp(2.6rem, 8vw, 4.6rem)/.95 var(--f-d); text-transform: uppercase; letter-spacing: .01em; text-wrap: balance; }
+.lead { margin-top: 16px; font-size: 1.2rem; max-width: 44ch; }
+.sos { margin-top: 20px; font-size: .95rem; color: var(--muted); max-width: 52ch; }
+.sos strong { color: var(--accent); font-weight: 700; }
+.teaser { background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 20px; display: grid; gap: 6px; min-width: 0; }
+.label { font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; font-weight: 700; color: var(--muted); }
+.teaser h2 { font: 700 1.7rem/1.1 var(--f-d); }
+.teaser a.more { font-weight: 600; margin-top: 6px; }
+
+/* Sezioni */
+.sec { padding-block: 44px; border-top: 1px solid var(--line); }
+.sec-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; margin-bottom: 24px; }
+.sec-head h2 { font: 700 2.1rem/1 var(--f-d); text-transform: uppercase; letter-spacing: .02em; }
+.sub { font: 700 1.1rem/1.2 var(--f-d); text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin: 32px 0 12px; }
+
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 4px; min-width: 0; }
+.grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); }
+
+/* Eventi */
+.ev { display: grid; grid-template-columns: 68px minmax(0, 1fr); gap: 4px 16px; padding: 16px; align-content: start; }
+.dtile { display: grid; place-items: center; align-content: center; width: 68px; height: 72px; background: var(--accent); color: var(--accent-ink); border-radius: 3px; font-family: var(--f-d); text-transform: uppercase; line-height: 1; }
+.dtile.past { background: var(--soft); color: var(--muted); }
+.dd { font-size: 2.3rem; font-weight: 700; }
+.dm { font-size: 1rem; font-weight: 600; letter-spacing: .08em; margin-top: 2px; }
+.ev-b { min-width: 0; display: grid; gap: 4px; align-content: start; }
+.ev h3, .nw h3 { font: 700 1.45rem/1.15 var(--f-d); overflow-wrap: anywhere; }
+.meta { color: var(--muted); font-size: .95rem; overflow-wrap: anywhere; }
+.meta .k { font-weight: 700; color: var(--ink); margin-right: 6px; }
+.desc { margin-top: 6px; white-space: pre-wrap; overflow-wrap: anywhere; }
+.cover { display: block; width: 100%; max-width: 100%; aspect-ratio: 16 / 9; object-fit: cover; background: var(--soft); }
+.ev .cover { grid-column: 1 / -1; margin-top: 12px; border-radius: 3px; }
+
+/* News */
+.nw { display: flex; flex-direction: column; overflow: hidden; }
+.nw-b { padding: 16px; display: grid; gap: 8px; align-content: start; min-width: 0; }
+.nw .body { white-space: pre-wrap; overflow-wrap: anywhere; }
+.linkbtn { background: none; border: 0; padding: 4px 0; font: inherit; font-weight: 600; color: var(--accent); cursor: pointer; justify-self: start; min-height: 32px; text-decoration: underline; }
+
+/* Foto */
+.gal { display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr)); }
+.ph { display: grid; gap: 8px; align-content: start; min-width: 0; }
+.thumb { padding: 0; border: 0; background: var(--soft); aspect-ratio: 4 / 3; overflow: hidden; border-radius: 4px; cursor: zoom-in; display: block; width: 100%; }
+.thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.ph figcaption { font-size: .9rem; color: var(--muted); overflow-wrap: anywhere; }
+
+/* Chi siamo */
+.about { display: grid; gap: 32px; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); }
+.about p + p { margin-top: 12px; }
+.about p { overflow-wrap: anywhere; }
+.contacts { display: grid; gap: 12px; align-content: start; }
+.crow { display: grid; gap: 4px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+.crow dt { font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; font-weight: 700; color: var(--muted); }
+.crow dd { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+.cval { overflow-wrap: anywhere; min-width: 0; }
+
+.empty { padding: 24px; border: 1px dashed var(--line); border-radius: 4px; color: var(--muted); }
+
+.badge { display: inline-block; vertical-align: middle; margin-left: 8px; padding: 2px 8px; font: 700 .7rem/1.4 var(--f-b); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--line); border-radius: 3px; }
+
+/* Pulsanti */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 8px 18px; font: 600 1rem/1.2 var(--f-b); border-radius: 4px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; }
+.btn:hover { border-color: var(--ink); }
+.btn:disabled { opacity: .55; cursor: default; }
+.btn-primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.btn-primary:hover { border-color: var(--ink); }
+.btn-sm { min-height: 40px; padding: 4px 14px; font-size: .9rem; }
+.btn-danger { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.acts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.adminbar .btn { background: transparent; color: var(--bg); border-color: var(--bg); }
+
+/* Piè di pagina */
+.foot { border-top: 1px solid var(--line); padding-block: 28px; color: var(--muted); font-size: .9rem; }
+.foot .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; }
+
+/* Finestre */
+.overlay {
+  position: fixed; inset: 0; z-index: 50; overflow: auto;
+  background: rgba(10, 12, 14, .62);
+  display: flex; align-items: flex-start; justify-content: center;
+  padding: max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(16px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px));
+}
+.panel { width: 100%; max-width: 560px; margin-block: auto; background: var(--surface); color: var(--ink); border: 1px solid var(--line); border-radius: 6px; padding: 24px; }
+.panel h2 { font: 700 1.8rem/1.1 var(--f-d); text-transform: uppercase; margin-bottom: 20px; }
+.fld { display: grid; gap: 6px; margin-bottom: 16px; }
+.fld label { font-weight: 600; }
+.fld input, .fld textarea { width: 100%; max-width: 100%; font: inherit; color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 4px; padding: 10px 12px; min-height: 44px; }
+.fld textarea { resize: vertical; }
+.hint { font-size: .85rem; color: var(--muted); }
+.chk { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; min-height: 32px; }
+.chk input { width: 20px; height: 20px; }
+.ferr { color: var(--accent); font-weight: 600; margin-bottom: 12px; }
+.fstat { color: var(--muted); margin-bottom: 12px; }
+.frow { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 10px; }
+
+.steps { margin: 16px 0; padding-left: 22px; display: grid; gap: 8px; }
+.lb { flex-direction: column; align-items: center; justify-content: center; gap: 12px; background: rgba(8, 9, 10, .93); }
+.lb-row { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; min-width: 0; }
+.lb img { max-width: 100%; max-height: 74vh; object-fit: contain; min-width: 0; flex: 1 1 auto; }
+.lb-cap { color: #E8EAE6; text-align: center; overflow-wrap: anywhere; }
+.lb-btn { background: rgba(255, 255, 255, .14); color: #fff; border: 1px solid rgba(255, 255, 255, .35); border-radius: 4px; min-height: 44px; min-width: 44px; font: 600 1rem var(--f-b); cursor: pointer; padding: 6px 14px; }
+.lb-top { align-self: flex-end; }
+
+.toast { position: fixed; z-index: 60; left: 50%; transform: translateX(-50%); bottom: calc(16px + env(safe-area-inset-bottom, 0px)); max-width: calc(100% - 32px); background: var(--ink); color: var(--bg); padding: 10px 16px; border-radius: 4px; font-weight: 600; text-align: center; }
+
+@media (max-width: 760px) {
+  .hero { padding-block: 36px 28px; }
+  .hero-in, .about { grid-template-columns: minmax(0, 1fr); }
+  .sec { padding-block: 32px; }
+  .panel { padding: 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+}
+</style></head><body><div id="app"></div><script id="state" type="application/json">{"rev":1,"assoc":{"name":"Associazione Nazionale Vigili del Fuoco Sez. Savona","tagline":"Eventi, notizie e fotografie della nostra associazione.","about":"","sede":"","email":"","tel":""},"events":[{"id":"ex-barbara","demo":true,"title":"Santa Barbara, patrona dei Vigili del Fuoco","date":"2026-12-04","time":"10:30","place":"Luogo da definire","desc":"Celebrazione annuale della patrona. Chi gestisce il sito può inserire qui luogo e programma."},{"id":"ex-openday","demo":true,"title":"Giornata aperta alla cittadinanza","date":"2026-12-13","time":"09:00","place":"Sede dell’associazione","desc":"Mezzi, attrezzature e dimostrazioni per famiglie e scuole."}],"news":[{"id":"ex-benvenuto","demo":true,"title":"Benvenuti nel nostro sito","date":"2026-11-15","body":"Qui trovi gli eventi, le notizie e le fotografie dell’associazione. Chi gestisce il sito può sostituire questi testi di esempio con i contenuti reali."}],"photos":[]}</script><script>window.EXPORT_MODE=true;</script><script>
+(function () {
+  'use strict';
+
+  var TITLE = 'Associazione Vigili del Fuoco';
+  var FONTS = 'https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700&family=Barlow+Condensed:wght@600;700&display=swap';
+  var RESET = ':root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}';
+  var MAX_SHOWN = 12;
+
+  var S = JSON.parse(document.getElementById('state').textContent);
+  S.assoc = S.assoc || {};
+  S.events = S.events || [];
+  S.news = S.news || [];
+  S.photos = S.photos || [];
+
+  var app = document.getElementById('app');
+  var EXPORT = !!window.EXPORT_MODE;
+  var canEdit = false, artifactNs = null, assetsNs = null, downloadsNs = null, showAll = false, toastTimer = null;
+  var expanded = {};
+
+  var toastEl = document.createElement('div');
+  toastEl.className = 'toast';
+  toastEl.setAttribute('role', 'status');
+  toastEl.hidden = true;
+  document.body.appendChild(toastEl);
+
+  /* ---------- utilità ---------- */
+  function add(el, c) {
+    if (c == null || c === false) return;
+    if (Array.isArray(c)) { c.forEach(function (x) { add(el, x); }); return; }
+    el.appendChild(typeof c === 'string' || typeof c === 'number' ? document.createTextNode(String(c)) : c);
+  }
+  function h(tag, attrs) {
+    var el = document.createElement(tag);
+    if (attrs) {
+      Object.keys(attrs).forEach(function (k) {
+        var v = attrs[k];
+        if (v == null || v === false) return;
+        if (k === 'class') el.className = v;
+        else if (k === 'text') el.textContent = v;
+        else if (k.slice(0, 2) === 'on') el.addEventListener(k.slice(2), v);
+        else if (v === true) el.setAttribute(k, '');
+        else el.setAttribute(k, v);
+      });
+    }
+    for (var i = 2; i < arguments.length; i++) add(el, arguments[i]);
+    return el;
+  }
+  function pad(n) { return n < 10 ? '0' + n : '' + n; }
+  function todayISO() { var d = new Date(); return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()); }
+  function parseD(s) { var p = String(s).split('-'); return new Date(+p[0], +p[1] - 1, +p[2], 12); }
+  function fmt(s, opts) { try { return parseD(s).toLocaleDateString('it-IT', opts); } catch (e) { return s; } }
+  function fmtLong(s) { return fmt(s, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }); }
+  function fmtDay(s) { return fmt(s, { day: 'numeric', month: 'long', year: 'numeric' }); }
+  function uid() { return Date.now().toString(36) + Math.random().toString(36).slice(2, 6); }
+  function imgSrc(id) { return EXPORT ? 'images/' + id + '.jpg' : '/_blob/' + id; }
+  function idx(arr, id) { for (var i = 0; i < arr.length; i++) if (arr[i].id === id) return i; return -1; }
+  function paragraphs(text) {
+    return String(text || '').split(/\n\s*\n/).map(function (t) { return t.trim(); }).filter(Boolean)
+      .map(function (t) { return h('p', { text: t }); });
+  }
+
+  function toast(msg) {
+    toastEl.textContent = msg;
+    toastEl.hidden = false;
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toastEl.hidden = true; }, 3200);
+  }
+
+  function copyText(t) {
+    try {
+      navigator.clipboard.writeText(t).then(function () { toast('Copiato'); }, function () { toast('Copia non disponibile: seleziona il testo.'); });
+    } catch (e) { toast('Copia non disponibile: seleziona il testo.'); }
+  }
+
+  /* ---------- salvataggio ---------- */
+  function buildDoc(state) {
+    var css = document.getElementById('css').textContent;
+    var code = document.getElementById('src').textContent;
+    var json = JSON.stringify(state).replace(/</g, '\\u003c');
+    return '<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>' + RESET + '</style></head><body>' +
+      '<title>' + TITLE + '</title>' +
+      '<meta name="claude:viewport-fit-sides" content="cover">' +
+      '<link rel="stylesheet" href="' + FONTS + '">' +
+      '<style id="css">' + css + '</style>' +
+      '<div id="app"></div>' +
+      '<scr' + 'ipt id="state" type="application/json">' + json + '</scr' + 'ipt>' +
+      '<scr' + 'ipt id="src" type="text/plain">' + code + '</scr' + 'ipt>' +
+      '<scr' + 'ipt>' + code + '</scr' + 'ipt>' +
+      '</body></html>';
+  }
+
+  function commit(mutate) {
+    if (!artifactNs) return Promise.reject({ code: 'not_granted' });
+    var next = JSON.parse(JSON.stringify(S));
+    mutate(next);
+    next.rev = (next.rev || 0) + 1;
+    return artifactNs.publish(buildDoc(next));
+  }
+
+  function failMsg(e) {
+    var c = e && e.code;
+    if (c === 'conflict') return 'Qualcuno ha pubblicato una modifica nello stesso momento. La pagina si aggiorna: ripeti l’operazione.';
+    if (c === 'not_writer' || c === 'not_granted' || c === 'consent_required' || c === 'capability_disabled' || c === 'not_declared') return 'Non hai il permesso di modificare questo sito.';
+    if (c === 'too_large') return 'Il sito è diventato troppo grande. Elimina qualche contenuto e riprova.';
+    if (c === 'rate_limited') return 'Troppe modifiche ravvicinate. Attendi qualche secondo e riprova.';
+    if (c === 'quota_or_state') return 'Lo spazio per le foto è esaurito. Elimina qualche foto e riprova.';
+    return (e && e.message) ? e.message : 'Salvataggio non riuscito. Riprova.';
+  }
+  function lostPermission(e) {
+    var c = e && e.code;
+    if (c === 'not_writer' || c === 'not_granted' || c === 'consent_required' || c === 'capability_disabled' || c === 'not_declared') {
+      canEdit = false;
+      render();
+    }
+  }
+
+  /* ---------- immagini ---------- */
+  function shrink(file) {
+    return new Promise(function (res, rej) {
+      var url = URL.createObjectURL(file);
+      var img = new Image();
+      img.onload = function () {
+        var w = img.naturalWidth, hh = img.naturalHeight;
+        var s = Math.min(1, 1600 / Math.max(w, hh));
+        var c = document.createElement('canvas');
+        c.width = Math.max(1, Math.round(w * s));
+        c.height = Math.max(1, Math.round(hh * s));
+        var ctx = c.getContext('2d');
+        ctx.fillStyle = '#fff';
+        ctx.fillRect(0, 0, c.width, c.height);
+        ctx.drawImage(img, 0, 0, c.width, c.height);
+        URL.revokeObjectURL(url);
+        c.toBlob(function (b) { b ? res(b) : rej(new Error('Immagine non convertibile.')); }, 'image/jpeg', 0.85);
+      };
+      img.onerror = function () {
+        URL.revokeObjectURL(url);
+        rej(new Error('Formato immagine non supportato. Usa JPG, PNG o WebP.'));
+      };
+      img.src = url;
+    });
+  }
+  function uploadFile(file) {
+    if (!assetsNs) return Promise.reject({ code: 'not_granted' });
+    return shrink(file).then(function (blob) {
+      return assetsNs.upload(blob, { type: 'image/jpeg' });
+    }).then(function (r) { return r.id; });
+  }
+  function withImage(v, rec, fn) {
+    var cur = (rec && rec.img) || null;
+    if (v.rmimg) cur = null;
+    var f = v.img && v.img[0];
+    if (!f) return fn(cur);
+    return uploadFile(f).then(fn);
+  }
+  function imageFields(rec) {
+    if (!assetsNs) return [];
+    var out = [{ id: 'img', type: 'file', label: rec && rec.img ? 'Sostituisci l’immagine (facoltativo)' : 'Immagine (facoltativa)', hint: 'JPG, PNG o WebP. Viene ridimensionata automaticamente.' }];
+    if (rec && rec.img) out.push({ id: 'rmimg', type: 'check', label: 'Rimuovi l’immagine attuale' });
+    return out;
+  }
+
+  /* ---------- finestre e moduli ---------- */
+  function openForm(cfg) {
+    var prev = document.activeElement;
+    var busy = false;
+    var els = {};
+    var overlay = h('div', { class: 'overlay', role: 'presentation' });
+    var form = h('form', { class: 'panel', novalidate: true, 'aria-labelledby': 'fm-t' });
+    var err = h('p', { class: 'ferr', role: 'alert', hidden: true });
+    var stat = h('p', { class: 'fstat', role: 'status', hidden: true });
+
+    form.appendChild(h('h2', { id: 'fm-t', text: cfg.title }));
+    cfg.fields.forEach(function (f) {
+      var id = 'f-' + f.id, input;
+      if (f.type === 'textarea') input = h('textarea', { id: id, rows: f.rows || 5, maxlength: f.max || 6000 });
+      else if (f.type === 'file') input = h('input', { id: id, type: 'file', accept: 'image/*', multiple: !!f.multiple });
+      else if (f.type === 'check') input = h('input', { id: id, type: 'checkbox' });
+      else input = h('input', { id: id, type: f.type || 'text', maxlength: f.max || 200 });
+      if (f.type === 'check') input.checked = !!f.value;
+      else if (f.type !== 'file' && f.value != null) input.value = f.value;
+      els[f.id] = input;
+      if (f.type === 'check') form.appendChild(h('label', { class: 'chk', for: id }, input, f.label));
+      else form.appendChild(h('div', { class: 'fld' }, h('label', { for: id, text: f.label + (f.required ? ' *' : '') }), input, f.hint ? h('p', { class: 'hint', text: f.hint }) : null));
+    });
+    var cancel = h('button', { class: 'btn', type: 'button', text: 'Annulla', onclick: function () { if (!busy) close(); } });
+    var submit = h('button', { class: 'btn btn-primary', type: 'submit', text: cfg.submit });
+    form.appendChild(err);
+    form.appendChild(stat);
+    form.appendChild(h('div', { class: 'frow' }, cancel, submit));
+    overlay.appendChild(form);
+
+    function close() {
+      overlay.remove();
+      if (prev && prev.focus) prev.focus();
+    }
+    function showErr(m) { err.textContent = m; err.hidden = false; }
+    function setBusy(b, m) {
+      busy = b;
+      submit.disabled = b; cancel.disabled = b;
+      err.hidden = true;
+      stat.hidden = !m; stat.textContent = m || '';
+    }
+    overlay.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !busy) close(); });
+    overlay.addEventListener('mousedown', function (e) { if (e.target === overlay && !busy) close(); });
+    form.addEventListener('submit', function (ev) {
+      ev.preventDefault();
+      if (busy) return;
+      var vals = {};
+      for (var i = 0; i < cfg.fields.length; i++) {
+        var f = cfg.fields[i], el = els[f.id];
+        if (f.type === 'file') {
+          vals[f.id] = Array.prototype.slice.call(el.files || []);
+          if (f.required && !vals[f.id].length) { showErr('Scegli almeno una foto.'); return; }
+        } else if (f.type === 'check') {
+          vals[f.id] = el.checked;
+        } else {
+          var v = el.value.trim();
+          if (f.required && !v) { el.focus(); showErr('Compila il campo «' + f.label + '».'); return; }
+          vals[f.id] = v;
+        }
+      }
+      setBusy(true, 'Pubblicazione in corso…');
+      var p;
+      try { p = cfg.onSubmit(vals, function (m) { stat.hidden = false; stat.textContent = m; }); } catch (e) { p = Promise.reject(e); }
+      p.then(function () {
+        stat.hidden = false; stat.textContent = 'Pubblicato. La pagina si aggiorna…';
+      }, function (e) {
+        setBusy(false);
+        showErr(failMsg(e));
+        lostPermission(e);
+      });
+    });
+
+    document.body.appendChild(overlay);
+    var first = form.querySelector('input,textarea');
+    if (first) first.focus();
+  }
+
+  function eventForm(ev) {
+    var edit = !!ev;
+    openForm({
+      title: edit ? 'Modifica evento' : 'Nuovo evento',
+      submit: edit ? 'Salva modifiche' : 'Pubblica evento',
+      fields: [
+        { id: 'title', label: 'Titolo', required: true, value: ev && ev.title, max: 120 },
+        { id: 'date', label: 'Data', type: 'date', required: true, value: ev ? ev.date : todayISO() },
+        { id: 'time', label: 'Ora (facoltativa)', type: 'time', value: ev && ev.time },
+        { id: 'place', label: 'Luogo', value: ev && ev.place, max: 160 },
+        { id: 'desc', label: 'Descrizione', type: 'textarea', value: ev && ev.desc, rows: 5 }
+      ].concat(imageFields(ev)),
+      onSubmit: function (v) {
+        return withImage(v, ev, function (imgId) {
+          return commit(function (n) {
+            var rec = { id: ev ? ev.id : uid(), title: v.title, date: v.date, time: v.time, place: v.place, desc: v.desc };
+            if (imgId) rec.img = imgId;
+            if (ev) { var i = idx(n.events, ev.id); if (i >= 0) n.events[i] = rec; else n.events.push(rec); }
+            else n.events.push(rec);
+          });
+        });
+      }
+    });
+  }
+
+  function newsForm(item) {
+    var edit = !!item;
+    openForm({
+      title: edit ? 'Modifica notizia' : 'Nuova notizia',
+      submit: edit ? 'Salva modifiche' : 'Pubblica notizia',
+      fields: [
+        { id: 'title', label: 'Titolo', required: true, value: item && item.title, max: 140 },
+        { id: 'date', label: 'Data', type: 'date', required: true, value: item ? item.date : todayISO() },
+        { id: 'body', label: 'Testo', type: 'textarea', required: true, value: item && item.body, rows: 8, hint: 'Una riga vuota separa i paragrafi.' }
+      ].concat(imageFields(item)),
+      onSubmit: function (v) {
+        return withImage(v, item, function (imgId) {
+          return commit(function (n) {
+            var rec = { id: item ? item.id : uid(), title: v.title, date: v.date, body: v.body };
+            if (imgId) rec.img = imgId;
+            if (item) { var i = idx(n.news, item.id); if (i >= 0) n.news[i] = rec; else n.news.push(rec); }
+            else n.news.push(rec);
+          });
+        });
+      }
+    });
+  }
+
+  function photoForm() {
+    if (!assetsNs) { toast('Il caricamento delle foto non è disponibile in questa vista.'); return; }
+    openForm({
+      title: 'Aggiungi foto',
+      submit: 'Pubblica foto',
+      fields: [
+        { id: 'img', type: 'file', multiple: true, required: true, label: 'Foto (fino a 20 alla volta)', hint: 'JPG, PNG o WebP. Vengono ridimensionate automaticamente.' },
+        { id: 'cap', label: 'Didascalia (la stessa per tutte, facoltativa)', max: 200 }
+      ],
+      onSubmit: function (v, status) {
+        var files = v.img.slice(0, 20);
+        var ids = [];
+        var chain = Promise.resolve();
+        files.forEach(function (f, i) {
+          chain = chain.then(function () {
+            status('Carico la foto ' + (i + 1) + ' di ' + files.length + '…');
+            return uploadFile(f).then(function (id) { ids.push(id); });
+          });
+        });
+        return chain.then(function () {
+          status('Pubblicazione in corso…');
+          return commit(function (n) {
+            var d = todayISO();
+            var recs = ids.map(function (id) { return { id: uid(), img: id, cap: v.cap, date: d }; });
+            n.photos = recs.concat(n.photos);
+          });
+        });
+      }
+    });
+  }
+
+  function photoCapForm(p) {
+    openForm({
+      title: 'Didascalia della foto',
+      submit: 'Salva',
+      fields: [{ id: 'cap', label: 'Didascalia', value: p.cap, max: 200 }],
+      onSubmit: function (v) {
+        return commit(function (n) {
+          var i = idx(n.photos, p.id);
+          if (i >= 0) n.photos[i].cap = v.cap;
+        });
+      }
+    });
+  }
+
+  function infoForm() {
+    var a = S.assoc;
+    openForm({
+      title: 'Informazioni dell’associazione',
+      submit: 'Salva informazioni',
+      fields: [
+        { id: 'name', label: 'Nome dell’associazione', required: true, value: a.name, max: 100 },
+        { id: 'tagline', label: 'Frase di presentazione', value: a.tagline, max: 160 },
+        { id: 'about', label: 'Chi siamo', type: 'textarea', value: a.about, rows: 8, hint: 'Una riga vuota separa i paragrafi.' },
+        { id: 'sede', label: 'Sede', value: a.sede, max: 200 },
+        { id: 'email', label: 'Email', type: 'email', value: a.email, max: 120 },
+        { id: 'tel', label: 'Telefono', type: 'tel', value: a.tel, max: 40 }
+      ],
+      onSubmit: function (v) {
+        return commit(function (n) {
+          n.assoc = { name: v.name, tagline: v.tagline, about: v.about, sede: v.sede, email: v.email, tel: v.tel };
+        });
+      }
+    });
+  }
+
+  function removeItem(listName, id) {
+    return commit(function (n) {
+      var i = idx(n[listName], id);
+      if (i >= 0) n[listName].splice(i, 1);
+    });
+  }
+
+  function delBtn(listName, id) {
+    var armed = false, t = null;
+    var b = h('button', { class: 'btn btn-sm', type: 'button', text: 'Elimina' });
+    b.addEventListener('click', function () {
+      if (!armed) {
+        armed = true;
+        b.textContent = 'Conferma eliminazione';
+        b.classList.add('btn-danger');
+        t = setTimeout(function () { armed = false; b.textContent = 'Elimina'; b.classList.remove('btn-danger'); }, 4000);
+        return;
+      }
+      clearTimeout(t);
+      b.disabled = true;
+      b.textContent = 'Elimino…';
+      removeItem(listName, id).then(function () {
+        toast('Eliminato. La pagina si aggiorna…');
+      }, function (e) {
+        b.disabled = false; armed = false; b.textContent = 'Elimina'; b.classList.remove('btn-danger');
+        toast(failMsg(e));
+        lostPermission(e);
+      });
+    });
+    return b;
+  }
+
+  function acts(editFn, listName, id) {
+    return h('div', { class: 'acts' },
+      h('button', { class: 'btn btn-sm', type: 'button', text: 'Modifica', onclick: editFn }),
+      delBtn(listName, id));
+  }
+
+  /* ---------- esportazione per GitHub ---------- */
+  var crcTable = null;
+  function crc32(u8) {
+    if (!crcTable) {
+      crcTable = new Uint32Array(256);
+      for (var n = 0; n < 256; n++) {
+        var c = n;
+        for (var k = 0; k < 8; k++) c = (c & 1) ? (0xEDB88320 ^ (c >>> 1)) : (c >>> 1);
+        crcTable[n] = c >>> 0;
+      }
+    }
+    var crc = 0xFFFFFFFF;
+    for (var i = 0; i < u8.length; i++) crc = crcTable[(crc ^ u8[i]) & 0xFF] ^ (crc >>> 8);
+    return (crc ^ 0xFFFFFFFF) >>> 0;
+  }
+  function makeZip(files) {
+    var enc = new TextEncoder();
+    var parts = [], central = [], offset = 0, cdSize = 0;
+    files.forEach(function (f) {
+      var name = enc.encode(f.name), crc = crc32(f.data), size = f.data.length;
+      var lh = new DataView(new ArrayBuffer(30));
+      lh.setUint32(0, 0x04034b50, true); lh.setUint16(4, 20, true); lh.setUint16(6, 0x0800, true);
+      lh.setUint16(8, 0, true); lh.setUint16(10, 0, true); lh.setUint16(12, 0x21, true);
+      lh.setUint32(14, crc, true); lh.setUint32(18, size, true); lh.setUint32(22, size, true);
+      lh.setUint16(26, name.length, true); lh.setUint16(28, 0, true);
+      parts.push(lh.buffer, name, f.data);
+      var ch = new DataView(new ArrayBuffer(46));
+      ch.setUint32(0, 0x02014b50, true); ch.setUint16(4, 20, true); ch.setUint16(6, 20, true); ch.setUint16(8, 0x0800, true);
+      ch.setUint16(10, 0, true); ch.setUint16(12, 0, true); ch.setUint16(14, 0x21, true);
+      ch.setUint32(16, crc, true); ch.setUint32(20, size, true); ch.setUint32(24, size, true);
+      ch.setUint16(28, name.length, true); ch.setUint32(42, offset, true);
+      central.push(ch.buffer, name);
+      cdSize += 46 + name.length;
+      offset += 30 + name.length + size;
+    });
+    var end = new DataView(new ArrayBuffer(22));
+    end.setUint32(0, 0x06054b50, true);
+    end.setUint16(8, files.length, true); end.setUint16(10, files.length, true);
+    end.setUint32(12, cdSize, true); end.setUint32(16, offset, true);
+    return new Blob(parts.concat(central, [end.buffer]), { type: 'application/zip' });
+  }
+  function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+
+  function buildSite(state) {
+    var css = document.getElementById('css').textContent;
+    var code = document.getElementById('src').textContent;
+    var json = JSON.stringify(state).replace(/</g, '\\u003c');
+    var a = state.assoc || {};
+    var name = a.name || TITLE;
+    return '<!doctype html><html lang="it"><head><meta charset="utf-8">' +
+      '<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">' +
+      '<title>' + esc(name) + '</title>' +
+      '<meta name="description" content="' + esc(a.tagline || name) + '">' +
+      '<link rel="stylesheet" href="' + FONTS + '">' +
+      '<style>' + RESET + css + '</style></head><body>' +
+      '<div id="app"></div>' +
+      '<scr' + 'ipt id="state" type="application/json">' + json + '</scr' + 'ipt>' +
+      '<scr' + 'ipt>window.EXPORT_MODE=true;</scr' + 'ipt>' +
+      '<scr' + 'ipt>' + code + '</scr' + 'ipt>' +
+      '</body></html>';
+  }
+
+  function viaCanvas(id) {
+    return new Promise(function (res, rej) {
+      var img = new Image();
+      img.onload = function () {
+        var c = document.createElement('canvas');
+        c.width = img.naturalWidth; c.height = img.naturalHeight;
+        c.getContext('2d').drawImage(img, 0, 0);
+        c.toBlob(function (b) {
+          if (!b) { rej(new Error('Non riesco a leggere una delle foto.')); return; }
+          b.arrayBuffer().then(function (ab) { res(new Uint8Array(ab)); }, rej);
+        }, 'image/jpeg', 0.92);
+      };
+      img.onerror = function () { rej(new Error('Non riesco a leggere una delle foto.')); };
+      img.src = imgSrc(id);
+    });
+  }
+  function getBytes(id) {
+    return fetch(imgSrc(id))
+      .then(function (r) { if (!r.ok) throw new Error('http'); return r.arrayBuffer(); })
+      .then(function (b) { return new Uint8Array(b); })
+      .catch(function () { return viaCanvas(id); });
+  }
+
+  var README = 'Sito dell’associazione: istruzioni per GitHub Pages\n\n' +
+    '1. Su github.com crea un repository pubblico (oppure apri quello che hai già).\n' +
+    '2. Scegli «Add file» > «Upload files» e trascina dentro index.html e la cartella images. Poi premi «Commit changes».\n' +
+    '3. Vai in «Settings» > «Pages», scegli «Deploy from a branch», ramo main e cartella «/ (root)», poi salva.\n' +
+    '4. Dopo qualche minuto GitHub mostra l’indirizzo del sito.\n\n' +
+    'Per aggiornare il sito: modifica i contenuti nella pagina su Claude, scarica un nuovo ZIP e ricarica i file su GitHub al posto dei vecchi.\n';
+
+  function exportSite(setStatus) {
+    var ids = [];
+    S.photos.concat(S.events, S.news).forEach(function (x) { if (x.img && ids.indexOf(x.img) < 0) ids.push(x.img); });
+    var enc = new TextEncoder();
+    var files = [
+      { name: 'index.html', data: enc.encode(buildSite(S)) },
+      { name: 'LEGGIMI.txt', data: enc.encode(README) }
+    ];
+    var chain = Promise.resolve();
+    ids.forEach(function (id, i) {
+      if (!/^[A-Za-z0-9_-]+$/.test(id)) return;
+      chain = chain.then(function () {
+        setStatus('Preparo le foto: ' + (i + 1) + ' di ' + ids.length + '…');
+        return getBytes(id).then(function (u8) { files.push({ name: 'images/' + id + '.jpg', data: u8 }); });
+      });
+    });
+    return chain.then(function () {
+      setStatus('Creo il file ZIP…');
+      return downloadsNs.save({ filename: 'sito-associazione.zip', data: makeZip(files) });
+    });
+  }
+
+  function exportPanel() {
+    var prev = document.activeElement;
+    var demo = S.events.concat(S.news).filter(function (x) { return x.demo; }).length;
+    var overlay = h('div', { class: 'overlay', role: 'presentation' });
+    var stat = h('p', { class: 'fstat', role: 'status', hidden: true });
+    var err = h('p', { class: 'ferr', role: 'alert', hidden: true });
+    var go = h('button', { class: 'btn btn-primary', type: 'button', text: 'Scarica il file ZIP' });
+    var closeB = h('button', { class: 'btn', type: 'button', text: 'Chiudi' });
+    var panel = h('div', { class: 'panel', role: 'dialog', 'aria-modal': 'true', 'aria-labelledby': 'ex-t' },
+      h('h2', { id: 'ex-t', text: 'Scarica il sito per GitHub' }),
+      h('p', { text: 'Il file ZIP contiene la pagina del sito e le foto, già pronte da caricare su GitHub. Adesso il sito ha ' + S.events.length + ' eventi, ' + S.news.length + ' notizie e ' + S.photos.length + ' foto.' }),
+      demo ? h('p', { class: 'ferr', text: 'Ci sono ancora ' + demo + ' elementi di esempio. Modificali o eliminali prima di scaricare, altrimenti compariranno anche su GitHub.' }) : null,
+      h('ol', { class: 'steps' },
+        h('li', { text: 'Premi «Scarica il file ZIP» e scompatta il file sul computer.' }),
+        h('li', { text: 'Su github.com crea un repository pubblico (oppure apri quello che hai già).' }),
+        h('li', { text: 'Scegli «Add file» › «Upload files», trascina dentro index.html e la cartella images, poi premi «Commit changes».' }),
+        h('li', { text: 'Vai in «Settings» › «Pages», scegli «Deploy from a branch», ramo main e cartella «/ (root)», poi salva. Dopo qualche minuto GitHub mostra l’indirizzo del sito.' }),
+        h('li', { text: 'Per aggiornare il sito: modifica qui, scarica un nuovo ZIP e ricarica i file su GitHub al posto dei vecchi.' })),
+      err, stat,
+      h('div', { class: 'frow' }, closeB, go));
+    overlay.appendChild(panel);
+    function close() { overlay.remove(); if (prev && prev.focus) prev.focus(); }
+    closeB.addEventListener('click', close);
+    overlay.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !closeB.disabled) close(); });
+    overlay.addEventListener('mousedown', function (e) { if (e.target === overlay && !closeB.disabled) close(); });
+    if (!downloadsNs) {
+      go.disabled = true;
+      err.hidden = false;
+      err.textContent = 'Il download non è disponibile in questa vista. Apri la pagina nel browser su claude.ai e riprova.';
+    }
+    go.addEventListener('click', function () {
+      err.hidden = true;
+      go.disabled = true; closeB.disabled = true;
+      exportSite(function (m) { stat.hidden = false; stat.textContent = m; }).then(function () {
+        go.disabled = false; closeB.disabled = false;
+        stat.hidden = false; stat.textContent = 'File pronto: lo trovi nella cartella dei download.';
+      }, function (e) {
+        go.disabled = false; closeB.disabled = false;
+        stat.hidden = true; err.hidden = false;
+        var c = e && e.code;
+        err.textContent = c === 'declined' ? 'Download annullato.'
+          : (c === 'unavailable' || c === 'not_granted' || c === 'capability_disabled' || c === 'capability_removed') ? 'Il download non è disponibile in questa vista.'
+          : (e && e.message) ? e.message : 'Non sono riuscito a creare il file. Riprova.';
+      });
+    });
+    document.body.appendChild(overlay);
+    go.focus();
+  }
+
+  /* ---------- galleria ---------- */
+  function lightbox(start) {
+    var list = S.photos, i = start, prev = document.activeElement;
+    var img = h('img', { alt: '' });
+    var cap = h('p', { class: 'lb-cap' });
+    var ov = h('div', { class: 'overlay lb', role: 'dialog', 'aria-modal': 'true', 'aria-label': 'Galleria fotografica', tabindex: '-1' });
+    function show() {
+      var p = list[i];
+      img.src = imgSrc(p.img);
+      img.alt = p.cap || 'Fotografia dell’associazione';
+      cap.textContent = (p.cap ? p.cap + ' · ' : '') + (i + 1) + ' di ' + list.length;
+    }
+    function step(d) { i = (i + d + list.length) % list.length; show(); }
+    function close() {
+      document.removeEventListener('keydown', onKey);
+      ov.remove();
+      if (prev && prev.focus) prev.focus();
+    }
+    function onKey(e) {
+      if (e.key === 'Escape') close();
+      else if (e.key === 'ArrowLeft') step(-1);
+      else if (e.key === 'ArrowRight') step(1);
+    }
+    ov.appendChild(h('button', { class: 'lb-btn lb-top', type: 'button', text: 'Chiudi', onclick: close }));
+    ov.appendChild(h('div', { class: 'lb-row' },
+      list.length > 1 ? h('button', { class: 'lb-btn', type: 'button', 'aria-label': 'Foto precedente', text: '‹', onclick: function () { step(-1); } }) : null,
+      img,
+      list.length > 1 ? h('button', { class: 'lb-btn', type: 'button', 'aria-label': 'Foto successiva', text: '›', onclick: function () { step(1); } }) : null));
+    ov.appendChild(cap);
+    ov.addEventListener('mousedown', function (e) { if (e.target === ov) close(); });
+    document.addEventListener('keydown', onKey);
+    show();
+    document.body.appendChild(ov);
+    ov.focus();
+  }
+
+  /* ---------- sezioni ---------- */
+  function sortEvents() {
+    return S.events.slice().sort(function (a, b) { return (a.date + (a.time || '')).localeCompare(b.date + (b.time || '')); });
+  }
+  function upcoming() { var t = todayISO(); return sortEvents().filter(function (e) { return e.date >= t; }); }
+  function pastEvents() { var t = todayISO(); return sortEvents().filter(function (e) { return e.date < t; }).reverse(); }
+  function badge(x) { return x.demo ? h('span', { class: 'badge', text: 'Esempio' }) : null; }
+
+  function eventCard(e, isPast) {
+    var d = parseD(e.date);
+    var month = d.toLocaleDateString('it-IT', { month: 'short' }).replace('.', '');
+    return h('article', { class: 'card ev' },
+      h('div', { class: 'dtile' + (isPast ? ' past' : ''), 'aria-hidden': 'true' },
+        h('span', { class: 'dd', text: d.getDate() }), h('span', { class: 'dm', text: month })),
+      h('div', { class: 'ev-b' },
+        h('h3', {}, e.title, badge(e)),
+        h('p', { class: 'meta', text: fmtLong(e.date) + (e.time ? ' · ore ' + e.time : '') }),
+        e.place ? h('p', { class: 'meta' }, h('span', { class: 'k', text: 'Dove' }), e.place) : null,
+        e.desc ? h('p', { class: 'desc', text: e.desc }) : null,
+        canEdit ? acts(function () { eventForm(e); }, 'events', e.id) : null),
+      e.img ? h('img', { class: 'cover', src: imgSrc(e.img), alt: '', loading: 'lazy' }) : null);
+  }
+
+  function newsCard(n) {
+    var long = (n.body || '').length > 260;
+    var open = !!expanded[n.id];
+    var shown = long && !open ? n.body.slice(0, 260).replace(/\s+\S*$/, '') + '…' : n.body;
+    var body = h('p', { class: 'body', text: shown });
+    return h('article', { class: 'card nw' },
+      n.img ? h('img', { class: 'cover', src: imgSrc(n.img), alt: '', loading: 'lazy' }) : null,
+      h('div', { class: 'nw-b' },
+        h('p', { class: 'label', text: fmtDay(n.date) }),
+        h('h3', {}, n.title, badge(n)),
+        body,
+        long ? h('button', { class: 'linkbtn', type: 'button', text: open ? 'Mostra meno' : 'Leggi tutto', onclick: function () { expanded[n.id] = !open; render(); } }) : null,
+        canEdit ? acts(function () { newsForm(n); }, 'news', n.id) : null));
+  }
+
+  function photoTile(p, i) {
+    return h('figure', { class: 'ph' },
+      h('button', { class: 'thumb', type: 'button', 'aria-label': 'Apri la foto' + (p.cap ? ': ' + p.cap : ''), onclick: function () { lightbox(i); } },
+        h('img', { src: imgSrc(p.img), alt: p.cap || 'Fotografia dell’associazione', loading: 'lazy' })),
+      p.cap ? h('figcaption', { text: p.cap }) : null,
+      canEdit ? h('div', { class: 'acts' },
+        h('button', { class: 'btn btn-sm', type: 'button', text: 'Didascalia', onclick: function () { photoCapForm(p); } }),
+        delBtn('photos', p.id)) : null);
+  }
+
+  function sectionHead(title, addLabel, addFn) {
+    return h('div', { class: 'sec-head' },
+      h('h2', { text: title }),
+      canEdit && addFn ? h('button', { class: 'btn btn-primary', type: 'button', text: addLabel, onclick: addFn }) : null);
+  }
+
+  function headerEl() {
+    return h('header', { class: 'top' }, h('div', { class: 'wrap top-in' },
+      h('a', { class: 'brand', href: '#inizio', text: S.assoc.name || TITLE }),
+      h('nav', { class: 'nav', 'aria-label': 'Sezioni del sito' },
+        h('a', { href: '#eventi', text: 'Eventi' }),
+        h('a', { href: '#news', text: 'News' }),
+        h('a', { href: '#foto', text: 'Foto' }),
+        h('a', { href: '#chi-siamo', text: 'Chi siamo' }))));
+  }
+
+  function heroEl() {
+    var next = upcoming()[0];
+    var left = h('div', {},
+      h('h1', { text: S.assoc.name || TITLE }),
+      S.assoc.tagline ? h('p', { class: 'lead', text: S.assoc.tagline }) : null,
+      h('p', { class: 'sos' }, h('strong', { text: 'In caso di emergenza chiama il 112.' }), ' Questo sito racconta le attività dell’associazione e non è un servizio di soccorso.'));
+    var right = next ? h('div', { class: 'teaser' },
+      h('p', { class: 'label', text: 'Prossimo appuntamento' }),
+      h('h2', {}, next.title, badge(next)),
+      h('p', { class: 'meta', text: fmtLong(next.date) + (next.time ? ' · ore ' + next.time : '') }),
+      next.place ? h('p', { class: 'meta' }, h('span', { class: 'k', text: 'Dove' }), next.place) : null,
+      h('a', { class: 'more', href: '#eventi', text: 'Tutti gli eventi' })) : null;
+    return h('section', { class: 'hero', id: 'inizio' }, h('div', { class: 'wrap hero-in' + (right ? '' : ' solo') }, left, right));
+  }
+
+  function eventsEl() {
+    var up = upcoming(), past = pastEvents();
+    var wrap = h('div', { class: 'wrap' }, sectionHead('Eventi', 'Aggiungi evento', function () { eventForm(null); }));
+    if (up.length) wrap.appendChild(h('div', { class: 'grid' }, up.map(function (e) { return eventCard(e, false); })));
+    else wrap.appendChild(h('p', { class: 'empty', text: canEdit ? 'Nessun evento in programma. Usa «Aggiungi evento» per pubblicare il primo.' : 'Nessun evento in programma al momento. Torna a trovarci presto.' }));
+    if (past.length) {
+      wrap.appendChild(h('h3', { class: 'sub', text: 'Eventi passati' }));
+      wrap.appendChild(h('div', { class: 'grid' }, past.slice(0, 6).map(function (e) { return eventCard(e, true); })));
+    }
+    return h('section', { class: 'sec', id: 'eventi' }, wrap);
+  }
+
+  function newsEl() {
+    var list = S.news.slice().sort(function (a, b) { return b.date.localeCompare(a.date); });
+    var wrap = h('div', { class: 'wrap' }, sectionHead('News', 'Aggiungi notizia', function () { newsForm(null); }));
+    if (list.length) wrap.appendChild(h('div', { class: 'grid' }, list.map(newsCard)));
+    else wrap.appendChild(h('p', { class: 'empty', text: canEdit ? 'Nessuna notizia. Usa «Aggiungi notizia» per pubblicare la prima.' : 'Nessuna notizia pubblicata per ora.' }));
+    return h('section', { class: 'sec', id: 'news' }, wrap);
+  }
+
+  function photosEl() {
+    var wrap = h('div', { class: 'wrap' }, sectionHead('Foto', 'Aggiungi foto', assetsNs ? photoForm : null));
+    var list = S.photos;
+    if (list.length) {
+      var shown = showAll ? list : list.slice(0, MAX_SHOWN);
+      wrap.appendChild(h('div', { class: 'gal' }, shown.map(function (p, i) { return photoTile(p, i); })));
+      if (list.length > MAX_SHOWN) {
+        wrap.appendChild(h('div', { class: 'acts' }, h('button', { class: 'btn', type: 'button', text: showAll ? 'Mostra meno foto' : 'Mostra tutte le ' + list.length + ' foto', onclick: function () { showAll = !showAll; render(); } })));
+      }
+    } else {
+      wrap.appendChild(h('p', { class: 'empty', text: canEdit ? 'Nessuna foto. Usa «Aggiungi foto» per caricare le prime immagini.' : 'Le fotografie dell’associazione saranno pubblicate qui.' }));
+    }
+    return h('section', { class: 'sec', id: 'foto' }, wrap);
+  }
+
+  function contactRow(label, val) {
+    return h('div', { class: 'crow' },
+      h('dt', { text: label }),
+      h('dd', {}, h('span', { class: 'cval', text: val }),
+        h('button', { class: 'btn btn-sm', type: 'button', text: 'Copia', onclick: function () { copyText(val); } })));
+  }
+
+  function aboutEl() {
+    var a = S.assoc;
+    var wrap = h('div', { class: 'wrap' }, sectionHead('Chi siamo', 'Modifica informazioni', infoForm));
+    var text = paragraphs(a.about);
+    var rows = [];
+    if (a.sede) rows.push(contactRow('Sede', a.sede));
+    if (a.email) rows.push(contactRow('Email', a.email));
+    if (a.tel) rows.push(contactRow('Telefono', a.tel));
+    wrap.appendChild(h('div', { class: 'about' },
+      h('div', {}, text.length ? text : h('p', { class: 'empty', text: canEdit ? 'Scrivi la presentazione dell’associazione con «Modifica informazioni».' : 'La presentazione dell’associazione sarà pubblicata presto.' })),
+      rows.length ? h('dl', { class: 'contacts' }, rows) : null));
+    return h('section', { class: 'sec', id: 'chi-siamo' }, wrap);
+  }
+
+  function footerEl() {
+    return h('footer', { class: 'foot' }, h('div', { class: 'wrap' },
+      h('p', { text: S.assoc.name || TITLE }),
+      h('p', { text: 'Emergenze: 112' })));
+  }
+
+  function adminBar() {
+    var hasDemo = S.events.concat(S.news).some(function (x) { return x.demo; });
+    return h('div', { class: 'adminbar' }, h('div', { class: 'wrap' },
+      h('strong', { text: 'Modalità gestione' }),
+      h('span', { text: 'Puoi aggiungere, modificare ed eliminare eventi, notizie e foto. Chi visita il sito vede solo il risultato.' }),
+      hasDemo ? h('span', { text: 'Gli elementi con l’etichetta «Esempio» sono segnaposto: modificali o eliminali.' }) : null,
+      h('div', { class: 'acts' },
+        h('button', { class: 'btn btn-sm', type: 'button', text: 'Modifica nome e informazioni', onclick: infoForm }),
+        h('button', { class: 'btn btn-sm', type: 'button', text: 'Scarica per GitHub', onclick: exportPanel }))));
+  }
+
+  function render() {
+    var y = window.scrollY || 0;
+    app.textContent = '';
+    app.appendChild(h('div', { class: 'tape', 'aria-hidden': 'true' }));
+    if (canEdit) app.appendChild(adminBar());
+    app.appendChild(headerEl());
+    app.appendChild(heroEl());
+    app.appendChild(eventsEl());
+    app.appendChild(newsEl());
+    app.appendChild(photosEl());
+    app.appendChild(aboutEl());
+    app.appendChild(footerEl());
+    app.appendChild(h('div', { class: 'tape', 'aria-hidden': 'true' }));
+    window.scrollTo(0, y);
+  }
+
+  render();
+
+  (async function () {
+    try {
+      var c = window.claude;
+      if (!c || !c.use) return;
+      var u = await c.use('user');
+      var ok = u ? await u.canEdit() : false;
+      if (!ok) return;
+      artifactNs = await c.use('artifact');
+      if (!artifactNs) return;
+      assetsNs = await c.use('assets');
+      downloadsNs = await c.use('downloads');
+      canEdit = true;
+      render();
+    } catch (e) { /* resta la vista pubblica */ }
+  })();
+})();
+</script></body></html>
